@@ -13,7 +13,7 @@ import wasteless.server.presentation.mapper.UserMapper;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Controller
+
 public class UserQueryController {
 
 

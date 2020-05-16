@@ -15,7 +15,7 @@ import wasteless.server.presentation.mapper.GroceryListMapper;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Controller
+
 public class GroceryListQueryController {
 
     private final GroceryListQueryService groceryListService;

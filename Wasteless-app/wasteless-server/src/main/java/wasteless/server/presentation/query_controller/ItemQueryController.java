@@ -13,7 +13,6 @@ import wasteless.server.presentation.mapper.ItemMapper;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Controller
 public class ItemQueryController {
 
     private final ItemQueryService itemService;

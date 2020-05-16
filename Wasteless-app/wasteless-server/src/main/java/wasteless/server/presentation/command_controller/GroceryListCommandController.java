@@ -16,7 +16,6 @@ import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
-@Controller
 public class GroceryListCommandController {
 
     private final GroceryListCommandService groceryListService;

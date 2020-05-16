@@ -1,6 +1,7 @@
 package wasteless.server.business;
 
 import org.springframework.stereotype.Service;
+import wasteless.server.business.query_service.GroceryListQueryService;
 import wasteless.server.exception.ResourceNotFoundException;
 import wasteless.server.model.GroceryList;
 import wasteless.server.model.Item;
@@ -14,10 +15,10 @@ import java.time.LocalDate;
 public class WasteManagerService  {
 
     private PropertyChangeSupport support;
-    private final GroceryListService groceryListService;
+    private final GroceryListQueryService groceryListQueryService;
 
-    public WasteManagerService(GroceryListService groceryListService){
-        this.groceryListService = groceryListService;
+    public WasteManagerService(GroceryListQueryService groceryListQueryService){
+        this.groceryListQueryService = groceryListQueryService;
         support = new PropertyChangeSupport(this);
     }
 
@@ -50,7 +51,7 @@ public class WasteManagerService  {
     }
 
     public WasteCalculatorDTO computeWasteDTO(Long userId, Long groceryListId, WasteCalculatorDTO wasteCalculatorDTO)  throws ResourceNotFoundException {
-        GroceryList groceryList = groceryListService.getGroceryListById(userId, groceryListId);
+        GroceryList groceryList = groceryListQueryService.getGroceryListById(userId, groceryListId);
         int totalCalories = getTotalCalories(wasteCalculatorDTO.getCalculationDate(), groceryList);
         wasteCalculatorDTO.setWasteResult(totalCalories);
         wasteCalculatorDTO.setGroceryListName(groceryList.getGroceryListName());

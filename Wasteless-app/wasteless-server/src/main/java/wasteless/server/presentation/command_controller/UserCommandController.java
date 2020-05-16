@@ -16,7 +16,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-@Controller
 public class UserCommandController {
 
     private final UserCommandService userService;
