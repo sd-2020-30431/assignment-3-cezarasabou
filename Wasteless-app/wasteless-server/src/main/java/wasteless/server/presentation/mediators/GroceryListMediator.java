@@ -5,10 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import wasteless.server.exception.ResourceNotFoundException;
 import wasteless.server.model.GroceryList;
-import wasteless.server.presentation.command_controller.GroceryListCommandController;
+import wasteless.server.business.command_controller.GroceryListCommandController;
 import wasteless.server.presentation.dto.GroceryListDTO;
 import wasteless.server.presentation.dto.WasteCalculatorDTO;
-import wasteless.server.presentation.query_controller.GroceryListQueryController;
+import wasteless.server.business.query_controller.GroceryListQueryController;
 
 import javax.validation.Valid;
 import java.util.List;

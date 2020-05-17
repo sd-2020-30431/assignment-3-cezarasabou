@@ -5,9 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import wasteless.server.exception.ResourceNotFoundException;
 import wasteless.server.model.Item;
-import wasteless.server.presentation.command_controller.ItemCommandController;
+import wasteless.server.business.command_controller.ItemCommandController;
 import wasteless.server.presentation.dto.ItemDTO;
-import wasteless.server.presentation.query_controller.ItemQueryController;
+import wasteless.server.business.query_controller.ItemQueryController;
 
 import javax.validation.Valid;
 import java.util.List;

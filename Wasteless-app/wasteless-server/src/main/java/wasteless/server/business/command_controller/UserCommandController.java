@@ -1,9 +1,7 @@
-package wasteless.server.presentation.command_controller;
+package wasteless.server.business.command_controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
 import wasteless.server.business.command_service.UserCommandService;
 import wasteless.server.business.query_service.UserQueryService;
 import wasteless.server.exception.ResourceNotFoundException;
@@ -11,7 +9,6 @@ import wasteless.server.model.User;
 import wasteless.server.presentation.dto.UserDTO;
 import wasteless.server.presentation.mapper.UserMapper;
 
-import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;

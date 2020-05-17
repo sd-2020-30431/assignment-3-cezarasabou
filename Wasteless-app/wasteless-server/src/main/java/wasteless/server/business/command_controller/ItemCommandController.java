@@ -1,15 +1,12 @@
-package wasteless.server.presentation.command_controller;
+package wasteless.server.business.command_controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
 import wasteless.server.business.command_service.ItemCommandService;
 import wasteless.server.exception.ResourceNotFoundException;
 import wasteless.server.model.Item;
 import wasteless.server.presentation.dto.ItemDTO;
 import wasteless.server.presentation.mapper.ItemMapper;
 
-import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 

@@ -1,8 +1,6 @@
-package wasteless.server.presentation.command_controller;
+package wasteless.server.business.command_controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
 import wasteless.server.business.ExportService;
 import wasteless.server.business.WasteManagerService;
 import wasteless.server.business.command_service.GroceryListCommandService;
@@ -12,7 +10,6 @@ import wasteless.server.presentation.dto.GroceryListDTO;
 import wasteless.server.presentation.dto.WasteCalculatorDTO;
 import wasteless.server.presentation.mapper.GroceryListMapper;
 
-import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 

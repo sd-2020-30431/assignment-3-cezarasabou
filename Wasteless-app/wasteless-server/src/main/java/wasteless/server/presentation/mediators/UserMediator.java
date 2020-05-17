@@ -3,12 +3,11 @@ package wasteless.server.presentation.mediators;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import wasteless.server.business.command_service.UserCommandService;
 import wasteless.server.exception.ResourceNotFoundException;
 import wasteless.server.model.User;
-import wasteless.server.presentation.command_controller.UserCommandController;
+import wasteless.server.business.command_controller.UserCommandController;
 import wasteless.server.presentation.dto.UserDTO;
-import wasteless.server.presentation.query_controller.UserQueryController;
+import wasteless.server.business.query_controller.UserQueryController;
 
 import javax.validation.Valid;
 import java.util.List;

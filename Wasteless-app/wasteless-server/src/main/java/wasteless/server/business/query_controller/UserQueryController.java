@@ -1,9 +1,6 @@
-package wasteless.server.presentation.query_controller;
+package wasteless.server.business.query_controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import wasteless.server.business.query_service.UserQueryService;
 import wasteless.server.exception.ResourceNotFoundException;
 import wasteless.server.model.User;
