@@ -13,7 +13,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
-@Controller
+@RestController
 public class UserMediator {
 
     private final UserQueryHandler userQueryController;
@@ -35,7 +35,7 @@ public class UserMediator {
         return userQueryController.getUserById(userId);
     }
 
-    @GetMapping("activeUser")
+    @GetMapping("/activeUser")
     public UserDTO getActiveUser(){
         return userQueryController.getActiveUser();
     }

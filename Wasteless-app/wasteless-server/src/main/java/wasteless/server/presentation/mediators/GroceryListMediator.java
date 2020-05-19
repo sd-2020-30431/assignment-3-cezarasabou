@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
-@Controller
+@RestController
 public class GroceryListMediator {
 
     private final GroceryListCommandHandler groceryListCommandHandler;

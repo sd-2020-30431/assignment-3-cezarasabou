@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 
-@Controller
+@RestController
 public class ItemMediator {
 
     private final ItemQueryHandler itemQueryController;
