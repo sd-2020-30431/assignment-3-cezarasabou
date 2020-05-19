@@ -1,7 +1,8 @@
-package wasteless.server.business.command_controller;
+package wasteless.server.business.command_handler;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import wasteless.server.business.command_service.UserCommandService;
 import wasteless.server.business.query_service.UserQueryService;
 import wasteless.server.exception.ResourceNotFoundException;
@@ -13,13 +14,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class UserCommandController {
+@Component
+public class UserCommandHandler {
 
     private final UserCommandService userService;
     private final UserQueryService userQueryService;
     private final UserMapper userMapper;
 
-    public UserCommandController(UserCommandService userService, UserQueryService userQueryService, UserMapper userMapper) {
+    public UserCommandHandler(UserCommandService userService, UserQueryService userQueryService, UserMapper userMapper) {
         this.userService = userService;
         this.userQueryService = userQueryService;
         this.userMapper = userMapper;

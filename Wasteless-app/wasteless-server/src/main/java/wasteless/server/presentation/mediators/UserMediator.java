@@ -5,9 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import wasteless.server.exception.ResourceNotFoundException;
 import wasteless.server.model.User;
-import wasteless.server.business.command_controller.UserCommandController;
+import wasteless.server.business.command_handler.UserCommandHandler;
 import wasteless.server.presentation.dto.UserDTO;
-import wasteless.server.business.query_controller.UserQueryController;
+import wasteless.server.business.query_handler.UserQueryHandler;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -16,12 +16,12 @@ import java.util.Map;
 @Controller
 public class UserMediator {
 
-    private final UserQueryController userQueryController;
-    private final UserCommandController userCommandController;
+    private final UserQueryHandler userQueryController;
+    private final UserCommandHandler userCommandHandler;
 
-    public UserMediator(UserQueryController userQueryController, UserCommandController userCommandController) {
+    public UserMediator(UserQueryHandler userQueryController, UserCommandHandler userCommandHandler) {
         this.userQueryController = userQueryController;
-        this.userCommandController = userCommandController;
+        this.userCommandHandler = userCommandHandler;
     }
 
     @GetMapping("/users")
@@ -42,23 +42,23 @@ public class UserMediator {
 
     @PostMapping("user/login")
     public ResponseEntity<UserDTO> loginUser(@Valid @RequestBody User loginUser){
-        return userCommandController.loginUser(loginUser);
+        return userCommandHandler.loginUser(loginUser);
     }
 
     @PostMapping("/users")
     public UserDTO createUser(@Valid @RequestBody User user){
-        return userCommandController.createUser(user);
+        return userCommandHandler.createUser(user);
     }
 
     @PutMapping("/users/{id}")
     public ResponseEntity<UserDTO> updateUser(@PathVariable(value = "id") Long userId,
                                               @Valid @RequestBody User userDetails) throws ResourceNotFoundException{
-        return userCommandController.updateUser(userId, userDetails);
+        return userCommandHandler.updateUser(userId, userDetails);
     }
 
     @DeleteMapping("/users/{id}")
     public Map<String, Boolean> deleteUser(@PathVariable(value = "id") Long userId)
             throws ResourceNotFoundException{
-        return userCommandController.deleteUser(userId);
+        return userCommandHandler.deleteUser(userId);
     }
 }

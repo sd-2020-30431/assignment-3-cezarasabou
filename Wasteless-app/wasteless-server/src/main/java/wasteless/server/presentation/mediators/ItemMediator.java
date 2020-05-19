@@ -5,9 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import wasteless.server.exception.ResourceNotFoundException;
 import wasteless.server.model.Item;
-import wasteless.server.business.command_controller.ItemCommandController;
+import wasteless.server.business.command_handler.ItemCommandHandler;
 import wasteless.server.presentation.dto.ItemDTO;
-import wasteless.server.business.query_controller.ItemQueryController;
+import wasteless.server.business.query_handler.ItemQueryHandler;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -17,12 +17,12 @@ import java.util.Map;
 @Controller
 public class ItemMediator {
 
-    private final ItemQueryController itemQueryController;
-    private final ItemCommandController itemCommandController;
+    private final ItemQueryHandler itemQueryController;
+    private final ItemCommandHandler itemCommandHandler;
 
-    public ItemMediator(ItemQueryController itemQueryController, ItemCommandController itemCommandController) {
+    public ItemMediator(ItemQueryHandler itemQueryController, ItemCommandHandler itemCommandHandler) {
         this.itemQueryController = itemQueryController;
-        this.itemCommandController = itemCommandController;
+        this.itemCommandHandler = itemCommandHandler;
     }
 
     @GetMapping("/{groceryListId}/items")
@@ -39,20 +39,20 @@ public class ItemMediator {
 
     @PostMapping("/{groceryListId}/createItem")
     public ItemDTO createItem(@PathVariable(value = "groceryListId") Long groceryListId, @Valid @RequestBody Item item){
-        return itemCommandController.createItem(groceryListId, item);
+        return itemCommandHandler.createItem(groceryListId, item);
     }
 
     @PutMapping("/{groceryListId}/items/{id}")
     public ResponseEntity<ItemDTO> updateItem(@PathVariable(value = "id") Long itemId,
                                               @PathVariable(value = "groceryListId") Long groceryListId,
                                               @Valid @RequestBody Item itemDetails) throws ResourceNotFoundException{
-        return itemCommandController.updateItem(itemId, groceryListId, itemDetails);
+        return itemCommandHandler.updateItem(itemId, groceryListId, itemDetails);
     }
 
     @GetMapping("/deleteItem/{id}")
     public Map<String, Boolean> deleteItem(@PathVariable(value = "id") Long itemId)
             throws ResourceNotFoundException{
-        return itemCommandController.deleteItem(itemId);
+        return itemCommandHandler.deleteItem(itemId);
     }
 
 

@@ -1,6 +1,7 @@
-package wasteless.server.business.query_controller;
+package wasteless.server.business.query_handler;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import wasteless.server.business.query_service.UserQueryService;
 import wasteless.server.exception.ResourceNotFoundException;
 import wasteless.server.model.User;
@@ -11,13 +12,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class UserQueryController {
+@Component
+public class UserQueryHandler {
 
 
     private final UserQueryService userService;
     private final UserMapper userMapper;
 
-    public UserQueryController(UserQueryService userService, UserMapper userMapper) {
+    public UserQueryHandler(UserQueryService userService, UserMapper userMapper) {
         this.userService = userService;
         this.userMapper = userMapper;
     }

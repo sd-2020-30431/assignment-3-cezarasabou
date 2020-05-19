@@ -1,6 +1,7 @@
-package wasteless.server.business.command_controller;
+package wasteless.server.business.command_handler;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import wasteless.server.business.ExportService;
 import wasteless.server.business.WasteManagerService;
 import wasteless.server.business.command_service.GroceryListCommandService;
@@ -13,17 +14,19 @@ import wasteless.server.presentation.mapper.GroceryListMapper;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GroceryListCommandController {
+
+@Component
+public class GroceryListCommandHandler {
 
     private final GroceryListCommandService groceryListService;
     private final GroceryListMapper groceryListMapper;
     private final WasteManagerService wasteManagerService;
     private final ExportService exportService;
 
-    public GroceryListCommandController(GroceryListCommandService groceryListService,
-                                 GroceryListMapper groceryListMapper,
-                                 WasteManagerService wasteManagerService,
-                                 ExportService exportService) {
+    public GroceryListCommandHandler(GroceryListCommandService groceryListService,
+                                     GroceryListMapper groceryListMapper,
+                                     WasteManagerService wasteManagerService,
+                                     ExportService exportService) {
         this.groceryListService = groceryListService;
         this.groceryListMapper = groceryListMapper;
         this.wasteManagerService = wasteManagerService;

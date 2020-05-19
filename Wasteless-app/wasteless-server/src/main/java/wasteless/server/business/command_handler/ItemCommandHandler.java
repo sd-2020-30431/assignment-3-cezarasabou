@@ -1,6 +1,8 @@
-package wasteless.server.business.command_controller;
+package wasteless.server.business.command_handler;
 
+import lombok.extern.apachecommons.CommonsLog;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import wasteless.server.business.command_service.ItemCommandService;
 import wasteless.server.exception.ResourceNotFoundException;
 import wasteless.server.model.Item;
@@ -10,12 +12,13 @@ import wasteless.server.presentation.mapper.ItemMapper;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ItemCommandController {
+@Component
+public class ItemCommandHandler {
 
     private final ItemCommandService itemService;
     private final ItemMapper itemMapper;
 
-    public ItemCommandController(ItemCommandService itemService, ItemMapper itemMapper) {
+    public ItemCommandHandler(ItemCommandService itemService, ItemMapper itemMapper) {
         this.itemService = itemService;
         this.itemMapper = itemMapper;
     }
