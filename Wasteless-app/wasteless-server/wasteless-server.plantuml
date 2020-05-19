@@ -18,31 +18,127 @@ title __WASTELESS-SERVER's Class Diagram__\n
 
   namespace wasteless.server {
     namespace business {
-      class wasteless.server.business.GroceryListService {
-      }
-    }
-  }
-  
-
-  namespace wasteless.server {
-    namespace business {
-      class wasteless.server.business.ItemService {
-      }
-    }
-  }
-  
-
-  namespace wasteless.server {
-    namespace business {
-      class wasteless.server.business.UserService {
-      }
-    }
-  }
-  
-
-  namespace wasteless.server {
-    namespace business {
       class wasteless.server.business.WasteManagerService {
+      }
+    }
+  }
+  
+
+  namespace wasteless.server {
+    namespace business {
+      namespace command_handler {
+        class wasteless.server.business.command_handler.GroceryListCommandHandler {
+        }
+      }
+    }
+  }
+  
+
+  namespace wasteless.server {
+    namespace business {
+      namespace command_handler {
+        class wasteless.server.business.command_handler.ItemCommandHandler {
+        }
+      }
+    }
+  }
+  
+
+  namespace wasteless.server {
+    namespace business {
+      namespace command_handler {
+        class wasteless.server.business.command_handler.UserCommandHandler {
+        }
+      }
+    }
+  }
+  
+
+  namespace wasteless.server {
+    namespace business {
+      namespace command_service {
+        class wasteless.server.business.command_service.GroceryListCommandService {
+        }
+      }
+    }
+  }
+  
+
+  namespace wasteless.server {
+    namespace business {
+      namespace command_service {
+        class wasteless.server.business.command_service.ItemCommandService {
+        }
+      }
+    }
+  }
+  
+
+  namespace wasteless.server {
+    namespace business {
+      namespace command_service {
+        class wasteless.server.business.command_service.UserCommandService {
+        }
+      }
+    }
+  }
+  
+
+  namespace wasteless.server {
+    namespace business {
+      namespace query_handler {
+        class wasteless.server.business.query_handler.GroceryListQueryHandler {
+        }
+      }
+    }
+  }
+  
+
+  namespace wasteless.server {
+    namespace business {
+      namespace query_handler {
+        class wasteless.server.business.query_handler.ItemQueryHandler {
+        }
+      }
+    }
+  }
+  
+
+  namespace wasteless.server {
+    namespace business {
+      namespace query_handler {
+        class wasteless.server.business.query_handler.UserQueryHandler {
+        }
+      }
+    }
+  }
+  
+
+  namespace wasteless.server {
+    namespace business {
+      namespace query_service {
+        class wasteless.server.business.query_service.GroceryListQueryService {
+        }
+      }
+    }
+  }
+  
+
+  namespace wasteless.server {
+    namespace business {
+      namespace query_service {
+        class wasteless.server.business.query_service.ItemQueryService {
+        }
+      }
+    }
+  }
+  
+
+  namespace wasteless.server {
+    namespace business {
+      namespace query_service {
+        class wasteless.server.business.query_service.UserQueryService {
+        }
       }
     }
   }
@@ -75,6 +171,38 @@ title __WASTELESS-SERVER's Class Diagram__\n
   namespace wasteless.server {
     namespace exception {
       class wasteless.server.exception.ResourceNotFoundException {
+      }
+    }
+  }
+  
+
+  namespace wasteless.server {
+    namespace export.decorator {
+      class wasteless.server.export.decorator.GreenReportDecorator {
+      }
+    }
+  }
+  
+
+  namespace wasteless.server {
+    namespace export.decorator {
+      class wasteless.server.export.decorator.RedReportDecorator {
+      }
+    }
+  }
+  
+
+  namespace wasteless.server {
+    namespace export.decorator {
+      enum ReportColor {
+      }
+    }
+  }
+  
+
+  namespace wasteless.server {
+    namespace export.decorator {
+      abstract class wasteless.server.export.decorator.ReportDecorator {
       }
     }
   }
@@ -194,31 +322,7 @@ title __WASTELESS-SERVER's Class Diagram__\n
 
   namespace wasteless.server {
     namespace presentation {
-      class wasteless.server.presentation.GroceryListController {
-      }
-    }
-  }
-  
-
-  namespace wasteless.server {
-    namespace presentation {
-      class wasteless.server.presentation.ItemController {
-      }
-    }
-  }
-  
-
-  namespace wasteless.server {
-    namespace presentation {
       class wasteless.server.presentation.NotificationController {
-      }
-    }
-  }
-  
-
-  namespace wasteless.server {
-    namespace presentation {
-      class wasteless.server.presentation.UserController {
       }
     }
   }
@@ -296,6 +400,36 @@ title __WASTELESS-SERVER's Class Diagram__\n
 
   namespace wasteless.server {
     namespace presentation {
+      namespace mediators {
+        class wasteless.server.presentation.mediators.GroceryListMediator {
+        }
+      }
+    }
+  }
+  
+
+  namespace wasteless.server {
+    namespace presentation {
+      namespace mediators {
+        class wasteless.server.presentation.mediators.ItemMediator {
+        }
+      }
+    }
+  }
+  
+
+  namespace wasteless.server {
+    namespace presentation {
+      namespace mediators {
+        class wasteless.server.presentation.mediators.UserMediator {
+        }
+      }
+    }
+  }
+  
+
+  namespace wasteless.server {
+    namespace presentation {
       namespace notification {
         class wasteless.server.presentation.notification.WebSocketConfig {
         }
@@ -305,29 +439,56 @@ title __WASTELESS-SERVER's Class Diagram__\n
   
 
   wasteless.server.business.ExportService o-- wasteless.server.export.factory.FactoryProvider : factoryProvider
-  wasteless.server.business.GroceryListService o-- wasteless.server.presentation.mapper.GroceryListMapper : groceryListMapper
-  wasteless.server.business.GroceryListService o-- wasteless.server.persistance.GroceryListRepository : groceryListRepository
-  wasteless.server.business.GroceryListService o-- wasteless.server.persistance.UserRepository : userRepository
-  wasteless.server.business.ItemService o-- wasteless.server.persistance.GroceryListRepository : groceryListRepository
-  wasteless.server.business.ItemService o-- wasteless.server.persistance.ItemRepository : itemRepository
-  wasteless.server.business.UserService o-- wasteless.server.persistance.UserRepository : userRepository
-  wasteless.server.business.WasteManagerService o-- wasteless.server.business.GroceryListService : groceryListService
+  wasteless.server.business.WasteManagerService o-- wasteless.server.business.query_service.GroceryListQueryService : groceryListQueryService
+  wasteless.server.business.command_handler.GroceryListCommandHandler o-- wasteless.server.business.ExportService : exportService
+  wasteless.server.business.command_handler.GroceryListCommandHandler o-- wasteless.server.presentation.mapper.GroceryListMapper : groceryListMapper
+  wasteless.server.business.command_handler.GroceryListCommandHandler o-- wasteless.server.business.command_service.GroceryListCommandService : groceryListService
+  wasteless.server.business.command_handler.GroceryListCommandHandler o-- wasteless.server.business.WasteManagerService : wasteManagerService
+  wasteless.server.business.command_handler.ItemCommandHandler o-- wasteless.server.presentation.mapper.ItemMapper : itemMapper
+  wasteless.server.business.command_handler.ItemCommandHandler o-- wasteless.server.business.command_service.ItemCommandService : itemService
+  wasteless.server.business.command_handler.UserCommandHandler o-- wasteless.server.presentation.mapper.UserMapper : userMapper
+  wasteless.server.business.command_handler.UserCommandHandler o-- wasteless.server.business.query_service.UserQueryService : userQueryService
+  wasteless.server.business.command_handler.UserCommandHandler o-- wasteless.server.business.command_service.UserCommandService : userService
+  wasteless.server.business.command_service.GroceryListCommandService o-- wasteless.server.presentation.mapper.GroceryListMapper : groceryListMapper
+  wasteless.server.business.command_service.GroceryListCommandService o-- wasteless.server.persistance.GroceryListRepository : groceryListRepository
+  wasteless.server.business.command_service.GroceryListCommandService o-- wasteless.server.persistance.UserRepository : userRepository
+  wasteless.server.business.command_service.ItemCommandService o-- wasteless.server.persistance.GroceryListRepository : groceryListRepository
+  wasteless.server.business.command_service.ItemCommandService o-- wasteless.server.persistance.ItemRepository : itemRepository
+  wasteless.server.business.command_service.UserCommandService o-- wasteless.server.persistance.UserRepository : userRepository
+  wasteless.server.business.query_handler.GroceryListQueryHandler o-- wasteless.server.business.ExportService : exportService
+  wasteless.server.business.query_handler.GroceryListQueryHandler o-- wasteless.server.presentation.mapper.GroceryListMapper : groceryListMapper
+  wasteless.server.business.query_handler.GroceryListQueryHandler o-- wasteless.server.business.query_service.GroceryListQueryService : groceryListService
+  wasteless.server.business.query_handler.GroceryListQueryHandler o-- wasteless.server.business.WasteManagerService : wasteManagerService
+  wasteless.server.business.query_handler.ItemQueryHandler o-- wasteless.server.presentation.mapper.ItemMapper : itemMapper
+  wasteless.server.business.query_handler.ItemQueryHandler o-- wasteless.server.business.query_service.ItemQueryService : itemService
+  wasteless.server.business.query_handler.UserQueryHandler o-- wasteless.server.presentation.mapper.UserMapper : userMapper
+  wasteless.server.business.query_handler.UserQueryHandler o-- wasteless.server.business.query_service.UserQueryService : userService
+  wasteless.server.business.query_service.GroceryListQueryService o-- wasteless.server.presentation.mapper.GroceryListMapper : groceryListMapper
+  wasteless.server.business.query_service.GroceryListQueryService o-- wasteless.server.persistance.GroceryListRepository : groceryListRepository
+  wasteless.server.business.query_service.GroceryListQueryService o-- wasteless.server.persistance.UserRepository : userRepository
+  wasteless.server.business.query_service.ItemQueryService o-- wasteless.server.persistance.GroceryListRepository : groceryListRepository
+  wasteless.server.business.query_service.ItemQueryService o-- wasteless.server.persistance.ItemRepository : itemRepository
+  wasteless.server.business.query_service.UserQueryService o-- wasteless.server.persistance.UserRepository : userRepository
   wasteless.server.exception.GlobalExceptionHandler -up-|> org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler
+  wasteless.server.export.decorator.GreenReportDecorator -up-|> wasteless.server.export.decorator.ReportDecorator
+  wasteless.server.export.decorator.RedReportDecorator -up-|> wasteless.server.export.decorator.ReportDecorator
+  wasteless.server.export.decorator.ReportDecorator .up.|> wasteless.server.export.report.Report
+  wasteless.server.export.decorator.ReportDecorator o-- wasteless.server.export.report.Report : decoratedReport
   wasteless.server.export.factory.ReportFactory .up.|> wasteless.server.export.factory.AbstractFactory
   wasteless.server.export.report.JsonReport .up.|> wasteless.server.export.report.Report
+  wasteless.server.export.report.JsonReport o-- wasteless.server.export.decorator.ReportColor : reportColor
   wasteless.server.export.report.TextReport .up.|> wasteless.server.export.report.Report
+  wasteless.server.export.report.TextReport o-- wasteless.server.export.decorator.ReportColor : reportColor
   wasteless.server.model.GroceryList o-- wasteless.server.model.User : user
   wasteless.server.model.Item o-- wasteless.server.model.GroceryList : groceryList
-  wasteless.server.presentation.GroceryListController o-- wasteless.server.business.ExportService : exportService
-  wasteless.server.presentation.GroceryListController o-- wasteless.server.presentation.mapper.GroceryListMapper : groceryListMapper
-  wasteless.server.presentation.GroceryListController o-- wasteless.server.business.GroceryListService : groceryListService
-  wasteless.server.presentation.GroceryListController o-- wasteless.server.business.WasteManagerService : wasteManagerService
-  wasteless.server.presentation.ItemController o-- wasteless.server.presentation.mapper.ItemMapper : itemMapper
-  wasteless.server.presentation.ItemController o-- wasteless.server.business.ItemService : itemService
   wasteless.server.presentation.NotificationController .up.|> java.beans.PropertyChangeListener
   wasteless.server.presentation.NotificationController o-- wasteless.server.business.WasteManagerService : wasteManagerService
-  wasteless.server.presentation.UserController o-- wasteless.server.presentation.mapper.UserMapper : userMapper
-  wasteless.server.presentation.UserController o-- wasteless.server.business.UserService : userService
+  wasteless.server.presentation.mediators.GroceryListMediator o-- wasteless.server.business.command_handler.GroceryListCommandHandler : groceryListCommandHandler
+  wasteless.server.presentation.mediators.GroceryListMediator o-- wasteless.server.business.query_handler.GroceryListQueryHandler : groceryListQueryController
+  wasteless.server.presentation.mediators.ItemMediator o-- wasteless.server.business.command_handler.ItemCommandHandler : itemCommandHandler
+  wasteless.server.presentation.mediators.ItemMediator o-- wasteless.server.business.query_handler.ItemQueryHandler : itemQueryController
+  wasteless.server.presentation.mediators.UserMediator o-- wasteless.server.business.command_handler.UserCommandHandler : userCommandHandler
+  wasteless.server.presentation.mediators.UserMediator o-- wasteless.server.business.query_handler.UserQueryHandler : userQueryController
   wasteless.server.presentation.notification.WebSocketConfig .up.|> org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer
 
 

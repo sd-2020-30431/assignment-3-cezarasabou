@@ -18,25 +18,25 @@ import java.util.Map;
 public class GroceryListMediator {
 
     private final GroceryListCommandHandler groceryListCommandHandler;
-    private final GroceryListQueryHandler groceryListQueryController;
+    private final GroceryListQueryHandler groceryListQueryHandler;
 
 
     public GroceryListMediator(GroceryListCommandHandler groceryListCommandHandler,
                                GroceryListQueryHandler groceryListQueryController) {
         this.groceryListCommandHandler = groceryListCommandHandler;
-        this.groceryListQueryController = groceryListQueryController;
+        this.groceryListQueryHandler = groceryListQueryController;
     }
 
     @GetMapping("{userId}/groceryLists")
     public List<GroceryListDTO> getAllGroceryLists(@PathVariable(value = "userId") Long userId){
-        return groceryListQueryController.getAllGroceryLists(userId);
+        return groceryListQueryHandler.getAllGroceryLists(userId);
     }
 
     @GetMapping("{userId}/groceryList/{id}")
     public ResponseEntity<GroceryListDTO> getGroceryListById(@PathVariable(value = "id") Long groceryListId,
                                                              @PathVariable(value = "userId") Long userId)
             throws ResourceNotFoundException{
-        return groceryListQueryController.getGroceryListById(groceryListId, userId);
+        return groceryListQueryHandler.getGroceryListById(groceryListId, userId);
     }
 
     @PostMapping("{userId}/createGroceryList")

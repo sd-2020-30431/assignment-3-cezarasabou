@@ -15,26 +15,27 @@ import java.util.Map;
 
 
 @RestController
+
 public class ItemMediator {
 
-    private final ItemQueryHandler itemQueryController;
+    private final ItemQueryHandler itemQueryHandler;
     private final ItemCommandHandler itemCommandHandler;
 
     public ItemMediator(ItemQueryHandler itemQueryController, ItemCommandHandler itemCommandHandler) {
-        this.itemQueryController = itemQueryController;
+        this.itemQueryHandler = itemQueryController;
         this.itemCommandHandler = itemCommandHandler;
     }
 
     @GetMapping("/{groceryListId}/items")
     public List<ItemDTO> getAllItems(@PathVariable("groceryListId") Long groceryListId){
-        return itemQueryController.getAllItems(groceryListId);
+        return itemQueryHandler.getAllItems(groceryListId);
     }
 
     @GetMapping("/{groceryListId}/{id}")
     public ResponseEntity<ItemDTO> getItemById(@PathVariable(value = "groceryListId") Long groceryListId,
                                                @PathVariable(value = "id") Long itemId)
             throws ResourceNotFoundException{
-        return itemQueryController.getItemById(groceryListId, itemId);
+        return itemQueryHandler.getItemById(groceryListId, itemId);
     }
 
     @PostMapping("/{groceryListId}/createItem")

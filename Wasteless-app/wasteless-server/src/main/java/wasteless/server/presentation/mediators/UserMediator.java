@@ -1,7 +1,6 @@
 package wasteless.server.presentation.mediators;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import wasteless.server.exception.ResourceNotFoundException;
 import wasteless.server.model.User;
@@ -16,28 +15,28 @@ import java.util.Map;
 @RestController
 public class UserMediator {
 
-    private final UserQueryHandler userQueryController;
+    private final UserQueryHandler userQueryHandler;
     private final UserCommandHandler userCommandHandler;
 
     public UserMediator(UserQueryHandler userQueryController, UserCommandHandler userCommandHandler) {
-        this.userQueryController = userQueryController;
+        this.userQueryHandler = userQueryController;
         this.userCommandHandler = userCommandHandler;
     }
 
     @GetMapping("/users")
     public List<UserDTO> getAllUsers(){
-        return userQueryController.getAllUsers();
+        return userQueryHandler.getAllUsers();
     }
 
     @GetMapping("/users/{id}")
     public ResponseEntity<UserDTO> getUserById(@PathVariable(value = "id") Long userId)
             throws ResourceNotFoundException{
-        return userQueryController.getUserById(userId);
+        return userQueryHandler.getUserById(userId);
     }
 
     @GetMapping("/activeUser")
     public UserDTO getActiveUser(){
-        return userQueryController.getActiveUser();
+        return userQueryHandler.getActiveUser();
     }
 
     @PostMapping("user/login")
